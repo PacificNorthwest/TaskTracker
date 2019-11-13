@@ -1,0 +1,70 @@
+﻿@model LangateTaskTracker.WebServer.Models.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+@section Styles {
+    <style>
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+
+            .form-signin .checkbox {
+                font-weight: 400;
+            }
+
+            .form-signin .form-control {
+                position: relative;
+                box-sizing: border-box;
+                height: auto;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+                .form-signin .form-control:focus {
+                    z-index: 2;
+                }
+
+            .form-signin input[type="email"] {
+                margin-bottom: -1px;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            .form-signin input[type="password"] {
+                margin-bottom: 10px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+    </style>
+}
+
+<form method="post" asp-controller="Account" asp-action="Login" class="form-signin mt-5"
+      asp-route-returnUrl="@Model.ReturnUrl">
+    <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div>
+        <label asp-for="Email" class="sr-only"></label>
+        <input asp-for="Email" class="form-control" placeholder="Email address" autofocus/>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Password" class="sr-only"></label>
+        <input asp-for="Password" class="form-control" placeholder="Password"/>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="checkbox mb-3">
+        <label>
+            <input asp-for="RememberMe" /> Remember me
+        </label>
+    </div>
+    <div>
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login" />
+    </div>
+    <h4 class="h4 font-weight-normal mt-4 mb-4">Or</h4>
+    <a class="btn btn-lg btn-secondary text-white btn-block" asp-controller="Account" asp-action="Register">Sign Up</a>
+</form>
+
